@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Poros from 'poros'
-import 'poros/lib/style.less'
+import PorosUI from 'poros/ui'
+import 'poros/ui/style.js'
 import router from './router'
 import store from './store'
 import system from './config/system'
@@ -17,9 +18,9 @@ Vue.use(Poros, {
   system: Object.assign(system, {
     logo: require('./config/logo.png')
   }),
-  store,
-  router
+  store
 })
+Vue.use(PorosUI)
 
 new Vue({
   router,

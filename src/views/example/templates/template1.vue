@@ -101,9 +101,8 @@
 <script>
 import moment from 'moment'
 import { getTemp1, putTemp1, postTemp1, delTemp1 } from '@/utils/api'
-import { http, utils } from 'poros'
+import { createForm } from 'poros/utils'
 
-const { createForm } = utils
 const Form = createForm({
   name: '',
   sex: '保密',

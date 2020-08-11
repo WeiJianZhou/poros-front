@@ -75,6 +75,7 @@ export default {
   mounted() {
     // 获取登录用户信息
     this.$store.dispatch('requireUserInfo')
+    this.$store.dispatch('requestSysUid')
   }
 }
 </script>

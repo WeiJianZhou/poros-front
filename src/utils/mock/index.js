@@ -20,7 +20,6 @@ const createTemp1 = () => {
   }
 }
 const dataForTemp1 = Array.from({ length: 43 }, createTemp1)
-console.log(dataForTemp1)
 
 Mock.mock(/^\/api\/temp1\/?\??(\w+=\w+\&?)*/, 'get', function(req) {
   const params = qs.parse(req.url.split('?')[1])

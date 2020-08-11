@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import { utils } from 'poros'
+import { auth } from 'poros/utils'
 import { timeFix } from '@/utils'
 import system from '@/config/system'
 
-const { setToken } = utils.auth
+const { setToken } = auth
 
 export default {
   data() {

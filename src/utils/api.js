@@ -1,5 +1,4 @@
-import { utils } from 'poros'
-const { get, put, post, del } = utils.request
+import { get, put, post, del } from 'poros/http'
 
 export function getTemp1(params) {
   return get('/api/temp1', params)

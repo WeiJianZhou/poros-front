@@ -1,7 +1,7 @@
-import { utils } from 'poros'
+import { api } from 'poros/utils'
 import router from '@/router'
 
-const { api: { getUserInfo, login, logout } } = utils
+const { getUserInfo, login, logout } = api
 
 export default {
   state: {

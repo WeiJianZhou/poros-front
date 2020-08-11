@@ -1,7 +1,7 @@
-import { http, utils } from 'poros'
+import { auth } from 'poros/utils'
+import http from 'poros/http'
 import router from '@/router'
-import './mock'
-const { removeToken } = utils.auth
+const { removeToken } = auth
 
 /** 添加响应拦截器 */
 http.interceptors.response.use(res => {
