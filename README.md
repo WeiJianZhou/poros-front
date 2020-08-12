@@ -60,48 +60,16 @@ root ----------------------------- 根目录
 
 ## router
 
-项目默认提供了3个路由，分别是首页（欢迎页），登录页和404页，开发者可以按照自己的需求改造。
+静态路由：项目默认提供了3个路由，分别是首页（欢迎页），登录页和404页，开发者可以按照自己的需求改造。
 
-```javascript
-import Home from '@/layouts/Home.vue' // 首页布局组件
+动态路由：路由守卫实现了自动获取系统的菜单进行动态路由添加。在技术中台对菜单配置的地址相对项目的./views去查找组件。例如菜单组件地址的配置是"/template/page1"，则按顺序匹配[ "./views/template/page1/index.js",  "./views/template/page1/index.vue" , "./views/template/page1.js", "./views/template/page1.vue"] 。若没找到，则显示"组件正在开发中"
 
-const routes = [
-  {
-    path: '/',
-    component: Home,
-    children: [
-      {
-        path: '',
-        name: 'Hello',
-        component: () => import(/* webpackChunkName: "hello" */ '@/views/Hello.vue')
-      }
-    ]
-  },
-  {
-    path: '/',
-    component: Unauthorized,
-    children: [
-      {
-        path: 'login',
-        name: 'Login',
-        meta: { auth: false },
-        component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
-      }
-    ]
-  },
-  {
-    path: '/404',
-    name: '404',
-    meta: { auth: false },
-    component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
-  }
-]
-```
+布局：在开发页面时，加上layout属性，生成动态路由时会按照布局组件的名称，从项目的相对地址./layouts中寻找布局组件。通过poros-cli生成的项目会默认提供两个布局组件（主页以及登录的布局）。（PS：若页面时嵌入iframe中，则无布局。）
 
-meta参数解读：
+静态路由meta参数解读：
 
-- auth：是否要登录鉴权
-- fixed：静态菜单显示位置，目前仅支持显示在左侧菜单组件，值为'sider'
+- auth：是否要登录鉴权（叶子组件有效）
+- fixed：静态菜单显示位置，目前仅支持显示在左侧菜单组件，值为'sider'（1级模块有效）
 - icon：菜单的icon type
 
 在开发模式下，会导入模板示例，开发者可以直接复制模板代码到自己的页面组件。如果不想要模板组件，请删除以下代码和文件
@@ -183,14 +151,12 @@ export default {
 import Vue from 'vue'
 import Poros from 'poros'
 import 'poros/lib/style.less'
-import router from './router'
 import store from './store'
 import system from './config/system'
 
 Vue.use(Poros, {
   system,
-  store,
-  router
+  store
 })
 ```
 
@@ -200,7 +166,6 @@ Vue.use(Poros, {
 
 - system（必填）：系统配置，包含系统标识，系统名称以及系统logo。（PS：项目运行前，请先确保系统标识已在技术中台-系统管理中注册）
 - store（选填）：poros内部自有一套状态管理。如果传入该项目的store，则作为store的子模块(poros)，自定义的组件可通过store.state.poros访问。
-- router（选填）：如果传入该项目的router，则poros会自动根据系统标识请求该系统的菜单及权限进行动态路由的添加，并对路由访问进行鉴权。（PS：如果不传，部分业务组件和指令可能无法使用）
 
 
 # 设置代理
