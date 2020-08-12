@@ -80,7 +80,7 @@ router.beforeEach(async function(to, from, next) {
     }
   } else {
     if(isDev) next('/login')
-    else location.href = `/authlogin?fromUrl=${location.href}`
+    else location.href = `/auth/login?fromUrl=${location.href}`
   }
 })
 
