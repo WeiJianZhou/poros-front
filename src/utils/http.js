@@ -1,5 +1,6 @@
 import { auth } from 'poros/utils'
 import http from 'poros/http'
+import './mock'
 import router from '@/router'
 const { removeToken } = auth
 

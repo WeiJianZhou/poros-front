@@ -7,6 +7,7 @@ import store from '../store'
 import Home from '@/layouts/Home.vue'
 import system from '../config/system'
 import { firstUpperCase, getViewComponent, getLayoutComponent } from '@/utils'
+import exampleRoutes from '@/views/example/routes'
 
 const { getToken } = auth
 
