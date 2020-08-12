@@ -10,6 +10,7 @@ function resolve (dir) {
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
+  productionSourceMap: false,
   publicPath: '/' + (isDev ? '' : system.code),
   configureWebpack: {
     plugins: [
