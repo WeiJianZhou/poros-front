@@ -8,7 +8,7 @@ const dllPath = 'public/vendor'
 module.exports = {
   entry: {
     // 需要提取的库文件
-    vendor: ['vue', 'vue-router', 'vuex', 'axios', 'moment', 'mockjs', 'nprogress', 'babel-polyfill', 'core-js']
+    vendor: ['vue', 'vue-router', 'vuex', 'axios', 'moment', 'nprogress', 'babel-polyfill', 'core-js']
   },
   output: {
     path: path.join(__dirname, dllPath),
