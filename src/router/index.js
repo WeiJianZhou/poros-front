@@ -57,7 +57,7 @@ if(isDev) {
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/' + (isDev ? '' : system.code),
+  base: isDev ? '/' : system.baseUrl,
   routes
 })
 

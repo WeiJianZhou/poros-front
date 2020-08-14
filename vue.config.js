@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   productionSourceMap: false,
-  publicPath: '/' + (isDev ? '' : system.code),
+  publicPath: isDev ? '/' : system.baseUrl,
   configureWebpack: {
     plugins: [
       new webpack.DllReferencePlugin({
@@ -23,7 +23,7 @@ module.exports = {
   chainWebpack(config) {
     config.plugin('html').tap(args => {
       args[0].title = system.name
-      args[0].baseUrl = '/' + (isDev ? '' : `${system.code}/`)
+      args[0].baseUrl = isDev ? '' : system.baseUrl
       args[0].isDev = isDev
       return args
     })
